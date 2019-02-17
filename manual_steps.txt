@@ -1,0 +1,10 @@
+Before Deployment:
+
+
+After Deployment:
+1. Set value for Custom Setting "Org Settings"
+ContactSurveySupportedLanguages = "en;de"
+
+2. Execute Anonimous:
+
+	System.schedule('Contact Survey Email', '0 0 13 * * ?', new ScheduleContactSurveyBatch());

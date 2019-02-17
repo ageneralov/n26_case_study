@@ -1,0 +1,24 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,flexipage:availableForAllPageTypes,force:hasSObjectName" access="global" controller="ProductPricingController">
+    
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="pricing" type="Product_Country_Price__c" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+     
+    <aura:if isTrue="{!v.pricing != NULL}">
+        <lightning:recordViewForm recordId="{!v.pricing.Id}" objectApiName="Product_Country_Price__c">
+        	<div class="slds-box slds-theme_default">
+        		<lightning:outputField fieldName="Cost_per_Calendar_Month__c" />
+        		<lightning:outputField fieldName="ATM_Fee_in_other_currencies__c" />
+        		<lightning:outputField fieldName="Card_Replacement_Cost__c" />
+        	</div>
+    	</lightning:recordViewForm>
+    </aura:if>
+    
+	<aura:if isTrue="{!v.pricing == NULL}">
+		<div class="slds-box slds-theme_default">
+           No Pricing Data Available   
+        </div>    
+	</aura:if>    
+    
+</aura:component>
